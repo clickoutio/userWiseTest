@@ -128,7 +128,7 @@
     z-index: 999;
 }
 .popupContent {
-    @apply bg-white rounded p-8;
+    @apply bg-white rounded p-8 animate-flow_template;
     max-width: 1400px;
     width: 100%;
     height: 100%;

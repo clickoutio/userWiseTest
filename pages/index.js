@@ -14,9 +14,8 @@ function usePopupVisible(initialIsVisible) {
   const ref = useRef(null);
 
   const handleClickOutside = (event) => {
-    if (ref.current && !ref.current.contains(event.target)) {
-      setIsPopupVisible(false);
-    }
+    if (ref.current && !ref.current.contains(event.target))
+      setIsPopupVisible();
   };
 
   useEffect(() => {
@@ -33,6 +32,16 @@ function Flows() {
   const {user: userData, isLoading} = useUser();
   const {ref, isPopupVisible, setIsPopupVisible} =
     usePopupVisible(false);
+
+  useEffect(() => {
+    const close = (e) => {
+      if (e.keyCode === 27) {
+        setIsPopupVisible(false);
+      }
+    }
+    window.addEventListener('keydown', close)
+    return () => window.removeEventListener('keydown', close)
+  }, []);
 
   const stats = [
     {
@@ -79,7 +88,8 @@ function Flows() {
           <div className={"mx-1 my-4 cursor-pointer group"}>
             <div
               className={"w-80 h-80 border-2 border-dashed border-zinc-300 group-hover:border-zinc-500 ease-in-out duration-150 rounded-md px-8 py-6 flex flex-col justify-center items-center"}>
-              <img className={"opacity-40  group-hover:opacity-100 ease-in-out duration-150"} src={"/images/addFile.svg"} width={"50px"}/>
+              <img className={"opacity-40  group-hover:opacity-100 ease-in-out duration-150"}
+                   src={"/images/addFile.svg"} width={"50px"}/>
               <span className={"font-medium text-base mt-6"}>Start Blank</span>
               <span className={"text-sm text-gray-400"}>Create flow from Scratch</span>
             </div>

@@ -54,6 +54,15 @@ module.exports = {
           4: '#FBFAFC',
         },
       },
+      keyframes: {
+        flow_template: {
+          '0%': { transform: 'translateX(100%)' },
+          '100%': { transform: 'translateX(0)' },
+        }
+      },
+      animation: {
+        flow_template: 'flow_template 0.4s ease-in-out ',
+      }
     },
   },
   plugins: [],
