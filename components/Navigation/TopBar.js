@@ -5,10 +5,9 @@ import Link from 'next/link';
 import routes from '../../utils/routes';
 import logo from '../../public/images/logo-primary.svg';
 import UserIcon from '../../public/images/icons/account_circle.svg';
-import Button from '../Button';
 import Dropdown from '../Dropdown';
 import styles from './TopBar.module.css';
-import { useUser } from '@auth0/nextjs-auth0/client';
+import {useUser} from '@auth0/nextjs-auth0/client';
 
 const links = [
   /*
@@ -36,38 +35,39 @@ const links = [
   */
 ];
 
-const TopBar = ({ active }) => {
+const TopBar = ({active}) => {
   const {user: accountData} = useUser();
 
   return (
     <header className={styles.header}>
       <div className={styles.wrapper}>
         <div>
-          <Link href={routes.home}>
-            <a className={styles.logo}>
-              <Image
-                src={logo}
-                layout={'fill'}
-                objectFit={'contain'}
-                objectPosition={'center'}
-              />
-            </a>
+          <Link href={routes.home} className={styles.logo}>
+
+            <Image
+              src={logo}
+              layout={'fill'}
+              objectFit={'contain'}
+              objectPosition={'center'}
+            />
+
           </Link>
         </div>
         <div className={styles.tabs}>
-          {links.map(({ id, title, Icon, href, value }) => (
-            <Link key={id} href={href}>
-              <a
-                className={`${styles.tab} ${
-                  value === active ? styles.active : ''
-                }`}
-              >
-                <span className={styles.icon}>
-                  <Icon />
-                </span>
-                {title}
-              </a>
-            </Link>
+          {links.map(({id, title, Icon, href, value}) => (
+            (<Link
+              key={id}
+              href={href}
+              className={`${styles.tab} ${
+                value === active ? styles.active : ''
+              }`}>
+
+              <span className={styles.icon}>
+                <Icon/>
+              </span>
+              {title}
+
+            </Link>)
           ))}
         </div>
         <div className={styles.settings}>
@@ -94,17 +94,7 @@ const TopBar = ({ active }) => {
               </div>
               <div role={'none'}>
                 <Dropdown.Link href={"/api/auth/logout"}>
-                  <Button
-                    weight={'normal'}
-                    className={'w-full'}
-                    align={'left'}
-                    variant={'clean'}
-                    type="button"
-                    tabIndex="-1"
-                    //onClick={logout}
-                  >
-                    Sign out
-                  </Button>
+                  Sign out
                 </Dropdown.Link>
               </div>
             </Dropdown.Menu>
@@ -116,7 +106,7 @@ const TopBar = ({ active }) => {
 };
 
 TopBar.propTypes = {
-  active: PropTypes.oneOf(links.map(({ value }) => value)),
+  active: PropTypes.oneOf(links.map(({value}) => value)),
 };
 
 export default TopBar;

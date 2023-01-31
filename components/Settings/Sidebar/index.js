@@ -52,28 +52,27 @@ const links = [
 ];
 
 const Sidebar = ({ active }) => {
-  return (
-    <>
-      <h2 className={h2}>My Account</h2>
-      <p className={styles.info}>Manage your Clickout account</p>
-      <div className={styles.wrapper}>
-        {links.map(({ id, title, Icon, href, value }) => (
-          <Link key={id} href={href}>
-            <a
-              className={`${styles.link} ${
-                value === active ? styles.active : ''
-              }`}
-            >
-              <span className={styles.icon}>
-                <Icon />
-              </span>
-              {title}
-            </a>
-          </Link>
-        ))}
-      </div>
-    </>
-  );
+  return <>
+    <h2 className={h2}>My Account</h2>
+    <p className={styles.info}>Manage your Clickout account</p>
+    <div className={styles.wrapper}>
+      {links.map(({ id, title, Icon, href, value }) => (
+        (<Link
+          key={id}
+          href={href}
+          className={`${styles.link} ${
+            value === active ? styles.active : ''
+          }`}>
+
+          <span className={styles.icon}>
+            <Icon />
+          </span>
+          {title}
+
+        </Link>)
+      ))}
+    </div>
+  </>;
 };
 
 Sidebar.propTypes = {

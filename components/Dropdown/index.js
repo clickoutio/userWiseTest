@@ -98,11 +98,11 @@ Dropdown.Menu = DropdownMenu;
 const DropdownLink = ({ as = 'a', children, href, className, ...props }) => {
   if (href) {
     return (
-      <Link href={href}>
-        <a className={`${className} ${styles.link}`} {...props}>
-          {children}
-        </a>
-      </Link>
+      (<Link href={href} className={`${className} ${styles.link}`} {...props}>
+
+        {children}
+
+      </Link>)
     );
   }
   return (

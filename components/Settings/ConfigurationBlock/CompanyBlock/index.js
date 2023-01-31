@@ -38,135 +38,133 @@ const CompanyBlock = ({
     }
   }, [image]);
 
-  return (
-    <>
-      <Card
-        p0
-        backTo={routes.settings}
-        title={[
-          { label: 'Company Configuration', href: routes.settings },
-          'My Company',
-        ]}
-      >
-        {/*<h3 className={title}></h3>*/}
-        <form onSubmit={handleSubmit(handleAccountInfo)}>
-          <div className={styles.wrapper}>
-            <div className={styles.left}>
-              <div className={'mb-6'}>
-                <CustomInput
-                  variant={'floating'}
-                  label={'Nombre'}
-                  {...register('name')}
-                />
-              </div>
-              <div className={'mb-6'}>
-                <CustomInput
-                  variant={'floating'}
-                  label={'Social Reason'}
-                  {...register('socialReason')}
-                />
-              </div>
-              <div className={'mb-6'}>
-                <CustomInput
-                  variant={'floating'}
-                  label={'Localization'}
-                  {...register('localization')}
-                />
-              </div>
-              <div className={'mb-6'}>
-                <CustomInput
-                  variant={'floating'}
-                  label={'CIF'}
-                  {...register('cif')}
-                />
-              </div>
-              <div className={'mb-6'}>
-                <CustomInput
-                  variant={'floating'}
-                  label={'Address'}
-                  {...register('address')}
-                />
-              </div>
-              <div className={'mb-6'}>
-                <CustomInput
-                  variant={'floating'}
-                  label={'Postal Code'}
-                  {...register('postalCode')}
-                />
-              </div>
-              <div className={'mb-10'}>
-                <CustomInput
-                  variant={'floating'}
-                  label={'Phone'}
-                  {...register('phone')}
-                />
-              </div>
-            </div>
-            <div className={styles.right}>
-              {logoURL && (
-                <div className={styles.companyLogo}>
-                  <img src={logoURL} />
-                </div>
-              )}
-              <input
-                id={'logo'}
-                type="file"
-                className={'hidden'}
-                accept={'image/*'}
-                {...register('accountImage')}
+  return <>
+    <Card
+      p0
+      backTo={routes.settings}
+      title={[
+        { label: 'Company Configuration', href: routes.settings },
+        'My Company',
+      ]}
+    >
+      {/*<h3 className={title}></h3>*/}
+      <form onSubmit={handleSubmit(handleAccountInfo)}>
+        <div className={styles.wrapper}>
+          <div className={styles.left}>
+            <div className={'mb-6'}>
+              <CustomInput
+                variant={'floating'}
+                label={'Nombre'}
+                {...register('name')}
               />
-              <Button
-                htmlFor="logo"
-                type={'button'}
-                variant={'outline-primary'}
-                className={'w-full'}
-                disabled={loading}
-              >
-                + Upload Logo
-              </Button>
-              <Button
-                type={'button'}
-                disabled={loading}
-                onClick={() => {
-                  if (!image && logoURL) {
-                    setLogoURL('');
-                  }
-                  resetField('accountImage');
-                }}
-                variant={'clean'}
-                className={'w-full text-black-3 mt-2'}
-              >
-                Delete logo
-              </Button>
-              <p className={'label mt-12'}>
-                Manage your company logo. It will be visible in messages and
-                alerts.{' '}
-                <Link href={'#'}>
-                  <a className={'link'}>Más info</a>
-                </Link>
-              </p>
+            </div>
+            <div className={'mb-6'}>
+              <CustomInput
+                variant={'floating'}
+                label={'Social Reason'}
+                {...register('socialReason')}
+              />
+            </div>
+            <div className={'mb-6'}>
+              <CustomInput
+                variant={'floating'}
+                label={'Localization'}
+                {...register('localization')}
+              />
+            </div>
+            <div className={'mb-6'}>
+              <CustomInput
+                variant={'floating'}
+                label={'CIF'}
+                {...register('cif')}
+              />
+            </div>
+            <div className={'mb-6'}>
+              <CustomInput
+                variant={'floating'}
+                label={'Address'}
+                {...register('address')}
+              />
+            </div>
+            <div className={'mb-6'}>
+              <CustomInput
+                variant={'floating'}
+                label={'Postal Code'}
+                {...register('postalCode')}
+              />
+            </div>
+            <div className={'mb-10'}>
+              <CustomInput
+                variant={'floating'}
+                label={'Phone'}
+                {...register('phone')}
+              />
             </div>
           </div>
-          <hr />
-          <div
-            className={'mt-6 flex flex-wrap justify-start items-center gap-3'}
-          >
-            <Button disabled={loading} type={'button'} variant={'outline'}>
-              Cancel
+          <div className={styles.right}>
+            {logoURL && (
+              <div className={styles.companyLogo}>
+                <img src={logoURL} />
+              </div>
+            )}
+            <input
+              id={'logo'}
+              type="file"
+              className={'hidden'}
+              accept={'image/*'}
+              {...register('accountImage')}
+            />
+            <Button
+              htmlFor="logo"
+              type={'button'}
+              variant={'outline-primary'}
+              className={'w-full'}
+              disabled={loading}
+            >
+              + Upload Logo
             </Button>
             <Button
+              type={'button'}
               disabled={loading}
-              type={'submit'}
-              variant={'primary'}
-              loading={loading}
+              onClick={() => {
+                if (!image && logoURL) {
+                  setLogoURL('');
+                }
+                resetField('accountImage');
+              }}
+              variant={'clean'}
+              className={'w-full text-black-3 mt-2'}
             >
-              Save changes
+              Delete logo
             </Button>
+            <p className={'label mt-12'}>
+              Manage your company logo. It will be visible in messages and
+              alerts.{' '}
+              <Link href={'#'} className={'link'}>
+                Más info
+              </Link>
+            </p>
           </div>
-        </form>
-      </Card>
-    </>
-  );
+        </div>
+        <hr />
+        <div
+          className={'mt-6 flex flex-wrap justify-start items-center gap-3'}
+        >
+          <Button disabled={loading} type={'button'} variant={'outline'}>
+            Cancel
+          </Button>
+          <Button
+            disabled={loading}
+            type={'submit'}
+            variant={'primary'}
+            loading={loading}
+          >
+            Save changes
+          </Button>
+        </div>
+      </form>
+    </Card>
+  </>;
 };
 
 CompanyBlock.propTypes = {
