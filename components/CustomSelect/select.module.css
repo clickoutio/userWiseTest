@@ -1,0 +1,44 @@
+.selectWrapper{
+
+}
+
+.select {
+    @apply mt-2 py-3 pl-4 pr-8 text-sm font-semibold text-black flex gap-x-2 items-center border border-grey-3 rounded w-full relative bg-white;
+    -moz-appearance:none; /* Firefox */
+    -webkit-appearance:none; /* Safari and Chrome */
+    appearance:none;
+    outline: none;
+}
+.select:focus{
+    @apply outline outline-1 outline-primary;
+}
+/*.select:required:invalid {*/
+/*    color: #666;*/
+/*}*/
+/*.select option[value=""][disabled] {*/
+/*    display: none;*/
+/*}*/
+/*.select option {*/
+/*    color: #000;*/
+/*}*/
+.noLabel .select{
+    @apply mt-0;
+}
+
+.caret {
+    @apply absolute right-3 top-1/2 -translate-y-1/2 flex justify-center items-center;
+    width: 16px;
+    height: 16px;
+}
+
+.caret svg {
+    width: 8px;
+    height: auto;
+}
+
+.error{
+    @apply text-error text-xs inline-block font-medium pl-1;
+}
+
+/*.select:focus {*/
+/*}*/

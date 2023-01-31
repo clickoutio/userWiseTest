@@ -1,0 +1,7 @@
+.title{
+    @apply text-lg font-semibold text-black;
+}
+
+.description{
+    @apply text-base font-medium text-black-3;
+}

@@ -1,0 +1,9 @@
+.wrapper {
+    @apply container py-9;
+}
+
+.h2 {
+    @apply text-black font-semibold;
+    font-size: 28px;
+    line-height: 48px;
+}

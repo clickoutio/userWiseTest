@@ -1,0 +1,18 @@
+.condition {
+    @apply pr-12 relative !important;
+}
+
+.condition .remove {
+    @apply absolute top-1/2 -translate-y-1/2 p-2 right-2.5;
+}
+
+.answerInput {
+    @apply md:col-span-5 relative;
+}
+
+.answerInput input::-webkit-outer-spin-button,
+.answerInput input::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+

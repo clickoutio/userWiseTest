@@ -1,0 +1,76 @@
+.header{
+    @apply py-3 border-b border-grey-3 flex items-stretch bg-white;
+    min-height: 72px;
+}
+
+.wrapper{
+    @apply  container flex justify-between items-stretch flex-grow;
+}
+
+.wrapper > *{
+    min-width: 140px;
+}
+
+.logo{
+    margin-top: 12px;
+    display: block;
+    position: relative;
+    height: 31px;
+    width: 110px;
+}
+
+.logo *{
+    font-size: 0;
+}
+
+.tabs{
+    @apply flex-grow flex justify-center items-center gap-x-9;
+}
+
+.tab{
+    @apply py-2 px-3 font-semibold text-black-3 flex justify-center items-center gap-x-2 rounded transition-all;
+    min-width: 110px;
+    font-size: 14px;
+    line-height: 20px;
+
+}
+
+.tab .icon{
+    width: 15px;
+    height: 15px;
+    @apply relative block;
+}
+
+.tab .icon svg{
+    @apply fill-black-3 absolute h-full w-full transition-all;
+}
+
+.tab.active {
+    @apply bg-primary/10 text-black;
+}
+.tab.active .icon svg{
+    @apply fill-primary;
+}
+
+.settings {
+    min-width: 0;
+}
+
+.settings .button{
+    height: 47px;
+    width: 47px;
+    @apply p-1 flex justify-center items-center border gap-x-4 border-grey-3 rounded relative rounded-full;
+}
+
+.settings .button > div {
+    /*width: 39px;*/
+    /*height: 39px;*/
+    @apply h-full w-full overflow-hidden rounded-full;
+}
+
+.settings .button .companyLogo{
+    object-fit: cover;
+    object-position: center;
+    @apply absolute w-full h-full;
+}
+
