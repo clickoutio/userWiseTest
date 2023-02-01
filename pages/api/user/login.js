@@ -1,4 +1,3 @@
-import { issueUserJWT } from '../../../apis/security/securityUtils';
 import Airtable from 'airtable';
 
 export default async function handler(req, res) {
@@ -26,7 +25,6 @@ export default async function handler(req, res) {
       name,
       email,
       ...record.fields,
-      token: issueUserJWT(email).token,
     });
 
   return res.status(401).json({ err: 'not found' });

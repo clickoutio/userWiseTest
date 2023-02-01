@@ -1,5 +1,5 @@
 import React from "react";
-import styles from "../../pages/flows/flows.module.css";
+import styles from "../../pages/index.module.css";
 import FlowTemplates from "../FlowTemplates";
 
 const Popup = React.forwardRef(({handleUserClickOnATemplate}, ref) => {

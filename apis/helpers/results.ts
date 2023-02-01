@@ -1,4 +1,4 @@
-import { Result } from 'apis/interfaces/results';
+import { Result } from '../interfaces/results';
 
 const makeSuccess = (value: any) => ({
   isSuccess: () => true,

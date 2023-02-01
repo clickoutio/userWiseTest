@@ -3,7 +3,7 @@ import TopBar from '../components/Navigation/TopBar';
 import DotIcon from '../public/images/icons/dot.inline.svg';
 import addIcon from '../public/images/icons/add.svg';
 import Button from '../components/Button';
-import styles from './flows/flows.module.css';
+import styles from './index.module.css';
 import Popup from "../components/Popup";
 import CongratsPopup from "../components/Popup/congrats";
 import {useSession} from "next-auth/react";

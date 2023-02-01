@@ -8,11 +8,3 @@ export interface RegisterAttr {
   firstName: string;
   lastName: string;
 }
-
-export interface ForgotPasswordAttr {
-  email: string;
-}
-
-export interface ResetPasswordAttr {
-  password: string;
-}
