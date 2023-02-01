@@ -1,7 +1,7 @@
 import React from 'react';
 import Image from 'next/image';
-import bgImage from 'public/images/bg.png';
-import logo from 'public/images/logo.svg';
+import bgImage from '../../public/images/bg.png';
+import logo from '../../public/images/logo.svg';
 import styles from './side-component.module.css';
 
 const AuthSideComponent = () => {

@@ -7,36 +7,12 @@ import logo from '../../public/images/logo-primary.svg';
 import UserIcon from '../../public/images/icons/account_circle.svg';
 import Dropdown from '../Dropdown';
 import styles from './TopBar.module.css';
-import {useUser} from '@auth0/nextjs-auth0/client';
+import {signOut, useSession} from "next-auth/react";
 
-const links = [
-  /*
-  {
-    id: 1,
-    title: 'Flows',
-    Icon: () => <FlowsIcon />,
-    href: routes.flows,
-    value: 'flows',
-  },
-  {
-    id: 2,
-    title: 'Stats',
-    Icon: () => <StatsIcon />,
-    href: routes.stats,
-    value: 'stats',
-  },
-  {
-    id: 3,
-    title: 'Settings',
-    Icon: () => <SettingsIcon />,
-    href: routes.settings,
-    value: 'settings',
-  },
-  */
-];
+const links = [];
 
 const TopBar = ({active}) => {
-  const {user: accountData} = useUser();
+  const {session: accountData} = useSession();
 
   return (
     <header className={styles.header}>
@@ -89,11 +65,8 @@ const TopBar = ({active}) => {
               {/*<Image src={UserIcon} height={32} width={32} />*/}
             </Dropdown.Button>
             <Dropdown.Menu>
-              <div role="none">
-                <Dropdown.Link href={'/settings'}>Account</Dropdown.Link>
-              </div>
               <div role={'none'}>
-                <Dropdown.Link href={"/api/auth/logout"}>
+                <Dropdown.Link href={"/"} onClick={signOut}>
                   Sign out
                 </Dropdown.Link>
               </div>

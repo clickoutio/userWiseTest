@@ -4,33 +4,15 @@ import DotIcon from '../public/images/icons/dot.inline.svg';
 import addIcon from '../public/images/icons/add.svg';
 import Button from '../components/Button';
 import styles from './flows/flows.module.css';
-import {useUser, withPageAuthRequired} from "@auth0/nextjs-auth0/client";
-import ErrorMessage from "../components/ErrorMessage";
 import Popup from "../components/Popup";
 import CongratsPopup from "../components/Popup/congrats";
-
-function usePopupVisible(initialIsVisible) {
-  const [isPopupVisible, setIsPopupVisible] = useState(initialIsVisible);
-
-  const ref = useRef(null);
-
-  const handleClickOutside = (event) => {
-    if (ref.current && !ref.current.contains(event.target))
-      setIsPopupVisible(false);
-  };
-
-  useEffect(() => {
-    document.addEventListener('click', handleClickOutside, true);
-    return () => {
-      document.removeEventListener('click', handleClickOutside, true);
-    };
-  }, []);
-
-  return [ref, isPopupVisible, setIsPopupVisible];
-}
+import {useSession} from "next-auth/react";
+import usePopupVisible from "../hocs/usePopupVisible";
+import Router from "next/router";
 
 function Flows() {
-  const {user: userData, isLoading} = useUser();
+  console.log(useSession());
+
   const [ref, isPopupVisible, setIsPopupVisible] =
     usePopupVisible(false);
 
@@ -48,6 +30,13 @@ function Flows() {
     window.addEventListener('keydown', close)
     return () => window.removeEventListener('keydown', close)
   }, []);
+
+  const {session: userData, status} = useSession();
+
+  if (status === 'loading') return <div>Loading...</div>
+
+  if (status !== "authenticated")
+    return Router.push("/api/auth/signin")
 
   const handleUserClickOnATemplate = () => {
     console.log('handleUserClickOnATemplate');
@@ -96,7 +85,6 @@ function Flows() {
 
   return (
     <>
-      {isLoading && <></>}
       {isCongratsVisible && <CongratsPopup ref={congratsRef}/>}
       {isPopupVisible && <Popup ref={ref} handleUserClickOnATemplate={handleUserClickOnATemplate}/>}
       <TopBar active={'flows'}/>
@@ -119,11 +107,5 @@ function Flows() {
     </>
   );
 }
-;
 
-Flows.propTypes = {};
-
-export default withPageAuthRequired(Flows, {
-  onRedirecting: () => <></>,
-  onError: error => <ErrorMessage>{error.message}</ErrorMessage>
-});
+export default Flows;

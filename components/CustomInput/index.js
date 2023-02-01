@@ -1,7 +1,7 @@
 import React, { forwardRef, useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
-import EyeIcon from 'public/images/icons/eye.inline.svg';
-import EyeCrossedIcon from 'public/images/icons/eye-crossed.inline.svg';
+import EyeIcon from '../../public/images/icons/eye.inline.svg';
+import EyeCrossedIcon from '../../public/images/icons/eye-crossed.inline.svg';
 import Image from 'next/image';
 import styles from './input.module.css';
 
