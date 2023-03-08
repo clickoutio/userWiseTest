@@ -36,6 +36,7 @@ function Flows() {
 
   const sendRefinerData = () => {
     const _refiner = dynamic(() => import('refiner-js'), {ssr: false});
+    console.log("using refiner", _refiner);
     _refiner('setProject', '431bd1e0-bd0f-11ed-8bb0-a7f70ccf4803');
     _refiner('identifyUser', {
       id: 'USER-ID-ABC-123', // Replace with your user ID
