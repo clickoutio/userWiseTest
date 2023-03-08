@@ -1,6 +1,5 @@
 import React, {useEffect} from 'react';
-import {SessionProvider} from 'next-auth/react';
-
+import dynamic from 'next/dynamic';
 import '../styles/global.css';
 
 export default function App({Component, pageProps: {session, ...pageProps}}) {
@@ -16,9 +15,10 @@ export default function App({Component, pageProps: {session, ...pageProps}}) {
     document.getElementsByTagName('head')[0].appendChild(s);
   }, []);
 
+  const _refiner = dynamic(() => import('refiner-js'), {ssr: false});
+  _refiner('setProject', '431bd1e0-bd0f-11ed-8bb0-a7f70ccf4803');
+
   return (
-    //<SessionProvider session={session}>
     <Component {...pageProps} />
-    //</SessionProvider>
   );
 }

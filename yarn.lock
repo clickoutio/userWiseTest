@@ -2204,6 +2204,11 @@
   dependencies:
     "picomatch" "^2.2.1"
 
+"refiner-js@^1.0.3":
+  "integrity" "sha512-JaAadWCVae8sJsmWj+jmdjb1e/grzJz3qcLh2xmCVOxsROcVoivDNbKboKr4XfWW5ZE2Wvfpozmhi3n+4jyl4g=="
+  "resolved" "https://registry.npmjs.org/refiner-js/-/refiner-js-1.0.3.tgz"
+  "version" "1.0.3"
+
 "regenerate-unicode-properties@^10.1.0":
   "integrity" "sha512-d1VudCLoIGitcU/hEg2QqvyGZQmdC0Lf8BqdOMXGFSvJP4bNV1+XqbPQeHHLD51Jh4QJJ225dlIFvY4Ly6MXmQ=="
   "resolved" "https://registry.npmjs.org/regenerate-unicode-properties/-/regenerate-unicode-properties-10.1.0.tgz"

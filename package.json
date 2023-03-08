@@ -16,7 +16,8 @@
     "react-dom": "18.2.0",
     "react-hook-form": "^7.43.0",
     "react-toastify": "^9.1.1",
-    "reactstrap": "^9.1.5"
+    "reactstrap": "^9.1.5",
+    "refiner-js": "^1.0.3"
   },
   "devDependencies": {
     "@babel/core": "^7.20.5",
