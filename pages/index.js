@@ -7,6 +7,7 @@ import styles from './index.module.css';
 import Popup from "../components/Popup";
 import CongratsPopup from "../components/Popup/congrats";
 import usePopupVisible from "../hocs/usePopupVisible";
+import dynamic from "next/dynamic";
 
 function Flows() {
   const [ref, isPopupVisible, setIsPopupVisible] =
@@ -31,6 +32,16 @@ function Flows() {
     console.log('handleUserClickOnATemplate');
     setIsPopupVisible(false);
     setIsCongratsVisible(true);
+  }
+
+  const sendRefinerData = () => {
+    const _refiner = dynamic(() => import('refiner-js'), {ssr: false});
+    _refiner('setProject', '431bd1e0-bd0f-11ed-8bb0-a7f70ccf4803');
+    _refiner('identifyUser', {
+      id: 'USER-ID-ABC-123', // Replace with your user ID
+      email: 'jane@awesome.com', // Replace with user Email
+      name: 'Jane Doe', // Replace with user name
+    });
   }
 
   const stats = [
@@ -60,6 +71,7 @@ function Flows() {
             type={'button'}
             onClick={() => {
               setIsPopupVisible(true)
+              sendRefinerData();
             }}
             size={'large'}
             className={styles.btnCreate}
