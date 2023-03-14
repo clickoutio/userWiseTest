@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react';
+import dynamic from 'next/dynamic';
 import '../styles/global.css';
-import _refiner from "refiner-js";
 
 export default function App({Component, pageProps: {session, ...pageProps}}) {
   useEffect(() => {
@@ -13,7 +13,10 @@ export default function App({Component, pageProps: {session, ...pageProps}}) {
     window['JIMO_PROJECT_ID'] = '48512554-0bcc-4e06-aad3-f65867aa11ed'; // Update this
 
     document.getElementsByTagName('head')[0].appendChild(s);
+  }, []);
 
+  useEffect(async () => {
+    const _refiner = (await import('refiner-js')).default;
     _refiner('setProject', '431bd1e0-bd0f-11ed-8bb0-a7f70ccf4803');
     _refiner('identifyUser', {
       id: 'USER-ID-ABC-123', // Replace with your user ID
